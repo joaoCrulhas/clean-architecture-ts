@@ -15,7 +15,7 @@ export default class SignupController {
         }
       });
       return Result.ok<HttpResponse>(undefined);
-    } catch (error: Error) {
+    } catch (error: Error | any) {
       return Result.fail<HttpResponse>(error.message);
     }
   }
