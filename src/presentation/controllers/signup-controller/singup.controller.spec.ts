@@ -2,7 +2,7 @@ import SignupController from "./index";
 
 const makeSut = () => {
   return new SignupController();
-}
+};
 
 describe("Signup Controller", () => {
   test("Should return 400 if no username  is not provided", () => {
