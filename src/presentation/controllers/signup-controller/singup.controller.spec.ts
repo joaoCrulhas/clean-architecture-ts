@@ -109,4 +109,23 @@ describe("Signup Controller", () => {
     expect(emailValidatorSpy).toHaveBeenCalled();
     expect(emailValidatorSpy).toHaveBeenCalledWith(httpRequest.body.email);
   });
+
+  test("Should throw an exception if EmailValidator@isValid throw an error", () => {
+    const { sut, emailValidator } = makeSut();
+    jest.spyOn(emailValidator, "isValid").mockImplementation(() => {
+      throw new Error("Server error");
+    });
+    const httpRequest = {
+      body: {
+        email: "correct_email@gmail.com",
+        username: "name",
+        password: "password",
+        password_confirmation: "password",
+      },
+    };
+    const response = sut.handle(httpRequest);
+    expect(response.isFailure).toBe(true);
+    expect(response.isSuccess).toBe(false);
+    expect(response.error).toBe('Server error');
+  });
 });
