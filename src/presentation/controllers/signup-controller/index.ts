@@ -1,16 +1,22 @@
+import { HttpRequest, HttpResponse } from "../../protocols/HttpResponse";
+import { Result } from "../../lib/result.base";
 export default class SignupController {
-  handle(httpRequest: any): any {
-    if (!httpRequest.body.name) {
-      return {
-        statusCode: 400,
-        body: new Error("Missing param: name"),
-      };
-    }
-    if (!httpRequest.body.password) {
-      return {
-        statusCode: 400,
-        body: new Error("Missing param: password"),
-      };
+  handle(httpRequest: HttpRequest): Result<HttpResponse> {
+    try {
+      const requiredFields = [
+        "email",
+        "password",
+        "password_confirmation",
+        "username",
+      ];
+      requiredFields.forEach(requiredField => {
+        if (!httpRequest.body[requiredField]) {
+          throw Error(`Missing param: ${requiredField}`);
+        }
+      });
+      return Result.ok<HttpResponse>(undefined);
+    } catch (error: Error) {
+      return Result.fail<HttpResponse>(error.message);
     }
   }
 }
