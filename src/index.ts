@@ -1,6 +1,6 @@
-const x: string[] = ['patos']
+const x: string[] = ['patos'];
 function s(d: string) {
-  x.push(d)
+  x.push(d);
 }
 
-s('x')
+s('x');
