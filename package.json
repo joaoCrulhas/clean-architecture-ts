@@ -4,18 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "dev": "tsc --watch ./src/**",
     "test": "echo \"Tests to do\" ",
     "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^28.1.1",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "eslint": "^8.17.0",
     "eslint-plugin-import": "^2.26.0",
     "husky": "^7.0.4",
-    "jest": "^28.1.1"
+    "jest": "^28.1.1",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.5"
   },
   "dependencies": {
     "typescript": "^4.7.3"
