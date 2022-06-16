@@ -126,6 +126,6 @@ describe("Signup Controller", () => {
     const response = sut.handle(httpRequest);
     expect(response.isFailure).toBe(true);
     expect(response.isSuccess).toBe(false);
-    expect(response.error).toBe('Server error');
+    expect(response.error).toBe("Server error");
   });
 });
