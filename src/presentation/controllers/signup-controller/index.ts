@@ -1,6 +1,8 @@
 import { HttpRequest, HttpResponse } from "../../protocols/HttpResponse";
 import { Result } from "../../lib/result.base";
-export default class SignupController {
+import {Controller} from "../../protocols/controller.protocol";
+
+export default class SignupController implements Controller {
   handle(httpRequest: HttpRequest): Result<HttpResponse> {
     try {
       const requiredFields = [
