@@ -4,6 +4,7 @@ import {
   AddAccount,
   AccountModel,
 } from "../../protocols/add-account/add-account.protocol";
+import {AddAccountRequest} from "../../protocols/add-account/add-account-request.model";
 
 class EmailValidatorStub implements EmailValidator {
   isValid(email: string): boolean {
@@ -11,13 +12,13 @@ class EmailValidatorStub implements EmailValidator {
   }
 }
 class AddAccountStub implements AddAccount {
-  add(account: any): AccountModel {
-    return {
+  add(account: AddAccountRequest): Promise<AccountModel> {
+    return Promise.resolve({
       id: "fakeId",
       timestamp: new Date(),
       email: account.email,
       username: account.username,
-    };
+    });
   }
 }
 
