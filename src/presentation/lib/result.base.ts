@@ -2,7 +2,7 @@ export class Result<T> {
   public isSuccess: boolean;
   public isFailure: boolean;
   public error: string | undefined;
-  private _value: T | undefined;
+  private readonly _value: T | undefined;
 
   private constructor(isSuccess: boolean, error?: string, value?: T) {
     if (isSuccess && error) {
