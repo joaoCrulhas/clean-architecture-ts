@@ -1,4 +1,4 @@
-import { EmailValidator } from "../../presentation/protocols/email-validator.protocol";
+import { EmailValidator } from "./email-validator.protocol";
 import { EmailValidatorAdapter } from "./email-validator-adapter";
 
 describe("EmailValidator adapter", () => {

@@ -3,7 +3,7 @@ import {
   AddAccount,
 } from "../../../domain/add-account/add-account.protocol";
 import { AddAccountRequest } from "../../../domain/add-account/add-account-request.model";
-import { Encrypt } from "../../../presentation/protocols/encrypter";
+import { Encrypt } from "../../../lib/encrypter/encrypt.protocol";
 import { AddAccountRepository } from "./protocols/add-account-repository.protocol";
 
 class DbAccount implements AddAccount {

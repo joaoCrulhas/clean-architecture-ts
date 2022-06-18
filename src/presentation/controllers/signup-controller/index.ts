@@ -1,7 +1,7 @@
 import { HttpRequest, HttpResponse } from "../../protocols/HttpResponse";
 import { Result } from "../../../lib/result.base";
 import { Controller } from "../../protocols/controller.protocol";
-import { EmailValidator } from "../../protocols/email-validator.protocol";
+import { EmailValidator } from "../../../lib/email-validator/email-validator.protocol";
 import { AddAccount } from "../../../domain/add-account/add-account.protocol";
 
 export default class SignupController implements Controller {
