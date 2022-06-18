@@ -224,6 +224,5 @@ describe("Signup Controller", () => {
       const response = sut.handle(httpRequest);
       console.log(response);
     });
-
   });
 });
