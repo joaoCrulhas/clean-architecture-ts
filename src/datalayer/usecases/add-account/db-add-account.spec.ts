@@ -3,7 +3,7 @@ import { Result } from "../../../lib/result.base";
 import { AddAccountRequest } from "../../../domain/add-account/add-account-request.model";
 import { AccountModel } from "../../../domain/add-account/add-account.protocol";
 import { AddAccountRepository } from "./protocols/add-account-repository.protocol";
-import {EncrypterStub} from "../../../lib/encrypter/encrypt-stub";
+import { EncrypterStub } from "../../../lib/encrypter/encrypt-stub";
 
 class AddAccountRepositoryStub implements AddAccountRepository {
   add(account: AddAccountRequest): Promise<AccountModel> {
