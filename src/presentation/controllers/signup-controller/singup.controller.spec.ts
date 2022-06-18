@@ -210,7 +210,7 @@ describe("Signup Controller", () => {
       console.log(response);
       expect(response.isFailure).toBe(true);
       expect(response.isSuccess).toBe(false);
-      expect(response.error).toEqual( 'Error to addAccount');
+      expect(response.error).toEqual("Error to addAccount");
     });
   });
 });
