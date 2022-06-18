@@ -33,9 +33,9 @@ describe("Encrypter library", () => {
     expect(result.error).toEqual("password not provided");
   });
   test("should call encrypt with correct argument", () => {
-      const { encrypt } = makeSut();
-      const encryptSpy = jest.spyOn(encrypt, 'encrypt');
-      const result = encrypt.encrypt("original_password");
-      expect(encryptSpy).toHaveBeenCalledWith("original_password")
+    const { encrypt } = makeSut();
+    const encryptSpy = jest.spyOn(encrypt, "encrypt");
+    const result = encrypt.encrypt("original_password");
+    expect(encryptSpy).toHaveBeenCalledWith("original_password");
   });
 });
