@@ -78,4 +78,23 @@ describe("DbAccount add account", function () {
       password: "hashed_password",
     });
   });
+  test("should throws if addAccountRepository throws", () => {
+    const { dbAccount, addAccountRepository } = makeSut();
+    jest.spyOn(addAccountRepository, "add").mockImplementationOnce(() => {
+      throw new Error("Error to add account")
+    });
+    dbAccount.add({
+      email: "valid_mail@gmail.com",
+      username: "username",
+      password: "password",
+    }).catch(error => {
+      expect(error.message).toEqual("Error to add account")
+    });
+    // expect(addAccountRepositorySpy).toHaveBeenCalled();
+    // expect(addAccountRepositorySpy).toHaveBeenCalledWith({
+    //   email: "valid_mail@gmail.com",
+    //   username: "username",
+    //   password: "hashed_password",
+    // });
+  });
 });
