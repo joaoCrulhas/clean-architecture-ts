@@ -1,6 +1,6 @@
 import { Result } from "../../lib/result.base";
 
 interface Encrypt {
-  encrypt(password: string): Result<string>;
+  encrypt(password: string): Promise<Result<string>>;
 }
 export { Encrypt };

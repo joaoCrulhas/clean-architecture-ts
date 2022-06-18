@@ -10,22 +10,24 @@ const makeSut = (): { encrypt: Encrypt } => {
 describe("Encrypter library", () => {
   test("should return a hashed_password", () => {
     const { encrypt } = makeSut();
-    const result = encrypt.encrypt("original_password");
-    expect(result.isSuccess).toEqual(true);
-    expect(result.isFailure).toEqual(false);
-    expect(result.getValue()).toEqual("hashed_password");
+    encrypt.encrypt("original_password").catch((error: Result<string>) => {
+      expect(error.error).toEqual("password not provided");
+      expect(error.isSuccess).toEqual(false);
+      expect(error.isFailure).toEqual(true);
+    });
   });
-  test("should return an error if an empty password is provided", () => {
+  test("should return an error if an empty password is provided", async () => {
     const { encrypt } = makeSut();
-    const result = encrypt.encrypt("");
-    expect(result.isSuccess).toEqual(false);
-    expect(result.isFailure).toEqual(true);
-    expect(result.error).toEqual("password not provided");
+    try {
+      await encrypt.encrypt("");
+    } catch (error) {
+      console.log(error);
+    }
   });
-  test("should call encrypt with correct argument", () => {
+  test("should call encrypt with correct argument", async () => {
     const { encrypt } = makeSut();
     const encryptSpy = jest.spyOn(encrypt, "encrypt");
-    const result = encrypt.encrypt("original_password");
+    await encrypt.encrypt("original_password");
     expect(encryptSpy).toHaveBeenCalledWith("original_password");
   });
 });

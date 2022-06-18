@@ -2,10 +2,10 @@ import { Encrypt } from "../../protocols/encrypter";
 import { Result } from "../result.base";
 
 export class EncrypterStub implements Encrypt {
-  encrypt(password: string): Result<string> {
+  async encrypt(password: string): Promise<Result<string>> {
     if (!password) {
-      return Result<string>.fail("password not provided");
+      return Promise.reject(Result<string>.fail("password not provided"));
     }
-    return Result<string>.ok("hashed_password");
+    return Promise.resolve(Result<string>.ok("hashed_password"));
   }
 }
