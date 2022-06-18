@@ -4,7 +4,7 @@ import {
   AddAccount,
   AccountModel,
 } from "../../protocols/add-account/add-account.protocol";
-import {AddAccountRequest} from "../../protocols/add-account/add-account-request.model";
+import { AddAccountRequest } from "../../protocols/add-account/add-account-request.model";
 
 class EmailValidatorStub implements EmailValidator {
   isValid(email: string): boolean {
