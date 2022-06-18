@@ -10,7 +10,7 @@ class AddAccountRepositoryStub implements AddAccountRepository {
     return Promise.resolve({
       email: "email@gmail.com",
       username: "username",
-      timestamp: new Date(),
+      timestamp: new Date("10-10-2020"),
       id: "fakeId",
     });
   }
@@ -92,11 +92,20 @@ describe("DbAccount add account", function () {
       .catch(error => {
         expect(error.message).toEqual("Error to add account");
       });
-    // expect(addAccountRepositorySpy).toHaveBeenCalled();
-    // expect(addAccountRepositorySpy).toHaveBeenCalledWith({
-    //   email: "valid_mail@gmail.com",
-    //   username: "username",
-    //   password: "hashed_password",
-    // });
+  });
+  test("should return an account if correct values are provided", async() => {
+    const { dbAccount } = makeSut();
+    const response = await dbAccount.add({
+      email: "valid_mail@gmail.com",
+      username: "username",
+      password: "password",
+    })
+    expect(response).toEqual({
+      email: 'email@gmail.com',
+      username: 'username',
+      timestamp: new Date("10-10-2020"),
+      id: 'fakeId'
+    })
+    console.log(response);
   });
 });
