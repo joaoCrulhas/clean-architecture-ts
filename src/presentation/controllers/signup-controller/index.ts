@@ -37,7 +37,7 @@ export default class SignupController implements Controller {
         statusCode: 200,
         body: account,
       };
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         resolve(Result.ok<HttpResponse>(response));
       });
     } catch (error: Error | any) {

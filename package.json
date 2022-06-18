@@ -7,7 +7,7 @@
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "dev": "tsc --watch ./src/**",
-    "test": "npm run format && npm run lint && jest --watch ./src/**",
+    "test": "npm run format && npm run lint && jest --passWithNoTests --watch ./src/**",
     "prepare": "husky install"
   },
   "author": "",

@@ -221,7 +221,17 @@ describe("Signup Controller", () => {
           password_confirmation: "password",
         },
       };
-      const response = sut.handle(httpRequest);
+      const response = await sut.handle(httpRequest);
+      expect(response.isSuccess).toBe(true);
+      expect(response.getValue()).toEqual({
+        statusCode: 200,
+        body: {
+          id: "fakeId",
+          timestamp: response.getValue()?.body.timestamp,
+          email: "correct_email@gmail.com",
+          username: "name",
+        },
+      });
       console.log(response);
     });
   });
