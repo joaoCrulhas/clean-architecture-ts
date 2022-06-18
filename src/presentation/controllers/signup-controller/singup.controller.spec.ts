@@ -4,7 +4,7 @@ import {
   AccountModel,
 } from "../../../domain/add-account/add-account.protocol";
 import { AddAccountRequest } from "../../../domain/add-account/add-account-request.model";
-import {EmailValidator} from "../../../lib/email-validator/email-validator.protocol";
+import { EmailValidator } from "../../../lib/email-validator/email-validator.protocol";
 
 class EmailValidatorStub implements EmailValidator {
   isValid(email: string): boolean {
