@@ -1,8 +1,6 @@
-import {Result} from "../../lib/result.base";
+import { Result } from "../../lib/result.base";
 
 interface Encrypt {
-    encrypt(password: string): Result<string>;
+  encrypt(password: string): Result<string>;
 }
-export {
-    Encrypt
-}
+export { Encrypt };

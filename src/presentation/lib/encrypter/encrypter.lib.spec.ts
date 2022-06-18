@@ -1,8 +1,6 @@
 import { Result } from "../result.base";
-import {Encrypt} from "../../protocols/encrypter";
-import {EncrypterStub} from "./index";
-
-
+import { Encrypt } from "../../protocols/encrypter";
+import { EncrypterStub } from "./index";
 
 const makeSut = (): { encrypt: Encrypt } => {
   return {
