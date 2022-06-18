@@ -1,20 +1,12 @@
 import { Result } from "../result.base";
+import {Encrypt} from "../../protocols/encrypter";
+import {EncrypterStub} from "./index";
 
-interface Encrypt {
-  encrypt(password: string): Result<string>;
-}
-class EncrypterStub implements Encrypt {
-  encrypt(password: string): Result<string> {
-    if (!password) {
-      return Result<string>.fail("password not provided");
-    }
-    return Result<string>.ok("hashed_password");
-  }
-}
+
+
 const makeSut = (): { encrypt: Encrypt } => {
-  const encrypt = new EncrypterStub();
   return {
-    encrypt,
+    encrypt: new EncrypterStub(),
   };
 };
 describe("Encrypter library", () => {
