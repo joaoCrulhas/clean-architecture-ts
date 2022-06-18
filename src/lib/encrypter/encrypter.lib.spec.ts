@@ -1,5 +1,5 @@
 import { Result } from "../result.base";
-import { Encrypt } from "../../protocols/encrypter";
+import { Encrypt } from "../../presentation/protocols/encrypter";
 import { EncrypterStub } from "./index";
 
 const makeSut = (): { encrypt: Encrypt } => {

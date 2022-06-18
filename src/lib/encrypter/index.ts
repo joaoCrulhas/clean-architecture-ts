@@ -1,4 +1,4 @@
-import { Encrypt } from "../../protocols/encrypter";
+import { Encrypt } from "../../presentation/protocols/encrypter";
 import { Result } from "../result.base";
 
 export class EncrypterStub implements Encrypt {

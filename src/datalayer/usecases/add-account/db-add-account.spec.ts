@@ -1,12 +1,10 @@
 import { DbAccount } from "./index";
-import { EncrypterStub } from "../../../presentation/lib/encrypter";
-import { Result } from "../../../presentation/lib/result.base";
-import { AddAccountRequest } from "../../../presentation/protocols/add-account/add-account-request.model";
-import { AccountModel } from "../../../presentation/protocols/add-account/add-account.protocol";
+import { EncrypterStub } from "../../../lib/encrypter";
+import { Result } from "../../../lib/result.base";
+import { AddAccountRequest } from "../../../domain/add-account/add-account-request.model";
+import { AccountModel } from "../../../domain/add-account/add-account.protocol";
+import { AddAccountRepository } from "./protocols/add-account-repository.protocol";
 
-export interface AddAccountRepository {
-  add(account: AddAccountRequest): Promise<AccountModel>;
-}
 class AddAccountRepositoryStub implements AddAccountRepository {
   add(account: AddAccountRequest): Promise<AccountModel> {
     return Promise.resolve({

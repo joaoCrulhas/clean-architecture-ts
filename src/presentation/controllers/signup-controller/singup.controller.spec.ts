@@ -3,8 +3,8 @@ import { EmailValidator } from "../../protocols/email-validator.protocol";
 import {
   AddAccount,
   AccountModel,
-} from "../../protocols/add-account/add-account.protocol";
-import { AddAccountRequest } from "../../protocols/add-account/add-account-request.model";
+} from "../../../domain/add-account/add-account.protocol";
+import { AddAccountRequest } from "../../../domain/add-account/add-account-request.model";
 
 class EmailValidatorStub implements EmailValidator {
   isValid(email: string): boolean {

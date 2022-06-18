@@ -1,10 +1,10 @@
 import {
   AccountModel,
   AddAccount,
-} from "../../../presentation/protocols/add-account/add-account.protocol";
-import { AddAccountRequest } from "../../../presentation/protocols/add-account/add-account-request.model";
+} from "../../../domain/add-account/add-account.protocol";
+import { AddAccountRequest } from "../../../domain/add-account/add-account-request.model";
 import { Encrypt } from "../../../presentation/protocols/encrypter";
-import { AddAccountRepository } from "./db-add-account.spec";
+import { AddAccountRepository } from "./protocols/add-account-repository.protocol";
 
 class DbAccount implements AddAccount {
   constructor(
