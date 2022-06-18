@@ -1,5 +1,6 @@
 import { DbAccount } from "./index";
 import { EncrypterStub } from "../../../presentation/lib/encrypter";
+import { Result } from "../../../presentation/lib/result.base";
 
 const makeSut = () => {
   const encrypt = new EncrypterStub();
@@ -28,5 +29,23 @@ describe("DbAccount add account", function () {
       password: "password",
     });
     expect(encryptSpy).toHaveBeenCalledWith("password");
+  });
+
+  test("should throw an exception if encrypt method throws an exception", () => {
+    const { dbAccount, encrypt } = makeSut();
+    jest.spyOn(encrypt, "encrypt").mockImplementation(() => {
+      return Promise.reject(Result<Error>.fail("Server Error"));
+    });
+    dbAccount
+      .add({
+        email: "valid_mail@gmail.com",
+        username: "username",
+        password: "password",
+      })
+      .catch(({ isSuccess, isFailure, error }: Result<Error>) => {
+        expect(isSuccess).toEqual(false);
+        expect(isFailure).toEqual(true);
+        expect(error).toEqual("Server Error");
+      });
   });
 });
