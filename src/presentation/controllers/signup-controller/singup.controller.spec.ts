@@ -1,6 +1,9 @@
 import SignupController from "./index";
 import { EmailValidator } from "../../protocols/email-validator.protocol";
-import {AddAccount, AccountModel} from "../../protocols/add-account/add-account.protocol";
+import {
+  AddAccount,
+  AccountModel,
+} from "../../protocols/add-account/add-account.protocol";
 
 class EmailValidatorStub implements EmailValidator {
   isValid(email: string): boolean {
@@ -154,11 +157,13 @@ describe("Signup Controller", () => {
       const response = sut.handle(httpRequest);
       expect(response.isFailure).toEqual(true);
       expect(response.isSuccess).toEqual(false);
-      expect(response.error).toEqual('password and password_confirmation are different');
+      expect(response.error).toEqual(
+        "password and password_confirmation are different"
+      );
     });
-    test('should call addAccount at least once', () => {
+    test("should call addAccount at least once", () => {
       const { sut, addAccount } = makeSut();
-      const addAccountSpy = jest.spyOn(addAccount, 'add');
+      const addAccountSpy = jest.spyOn(addAccount, "add");
       const httpRequest = {
         body: {
           email: "correct_email@gmail.com",
@@ -170,9 +175,9 @@ describe("Signup Controller", () => {
       sut.handle(httpRequest);
       expect(addAccountSpy).toHaveBeenCalled();
     });
-    test('should call addAccount with correct values', () => {
+    test("should call addAccount with correct values", () => {
       const { sut, addAccount } = makeSut();
-      const addAccountSpy = jest.spyOn(addAccount, 'add');
+      const addAccountSpy = jest.spyOn(addAccount, "add");
       const httpRequest = {
         body: {
           email: "correct_email@gmail.com",
@@ -187,7 +192,6 @@ describe("Signup Controller", () => {
         username: "name",
         password: "password",
       });
-    })
-
+    });
   });
 });

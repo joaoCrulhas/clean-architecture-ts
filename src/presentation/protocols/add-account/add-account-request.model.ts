@@ -1,8 +1,6 @@
 interface AddAccountRequest {
-    email: string;
-    username: string;
-    password: string;
+  email: string;
+  username: string;
+  password: string;
 }
-export {
-    AddAccountRequest
-}
+export { AddAccountRequest };
