@@ -9,7 +9,7 @@ export default class SignupController implements Controller {
     private readonly emailValidator: EmailValidator,
     private readonly addAccount: AddAccount
   ) {}
-  handle(httpRequest: HttpRequest): Result<HttpResponse> {
+  async handle(httpRequest: HttpRequest): Promise<Result<HttpResponse>> {
     try {
       const requiredFields = [
         "email",
@@ -32,8 +32,14 @@ export default class SignupController implements Controller {
           `password and password_confirmation are different`
         );
       }
-      this.addAccount.add({ username, email, password });
-      return Result.ok<HttpResponse>(undefined);
+      const account = await this.addAccount.add({ username, email, password });
+      const response: HttpResponse = {
+        statusCode: 200,
+        body: account,
+      };
+      return new Promise((resolve, reject) => {
+        resolve(Result.ok<HttpResponse>(response));
+      });
     } catch (error: Error | any) {
       return Result.fail<HttpResponse>(error.message);
     }
