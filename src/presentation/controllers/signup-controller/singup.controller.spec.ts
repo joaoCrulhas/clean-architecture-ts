@@ -193,5 +193,24 @@ describe("Signup Controller", () => {
         password: "password",
       });
     });
+    test("should return an error if addAccount throws an error", () => {
+      const { sut, addAccount } = makeSut();
+      jest.spyOn(addAccount, "add").mockImplementation(() => {
+        throw Error("Error to addAccount");
+      });
+      const httpRequest = {
+        body: {
+          email: "correct_email@gmail.com",
+          username: "name",
+          password: "password",
+          password_confirmation: "password",
+        },
+      };
+      const response = sut.handle(httpRequest);
+      console.log(response);
+      expect(response.isFailure).toBe(true);
+      expect(response.isSuccess).toBe(false);
+      expect(response.error).toEqual( 'Error to addAccount');
+    });
   });
 });
