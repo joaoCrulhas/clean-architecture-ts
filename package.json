@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start:sever": "sucrase-node ./src/main/server.ts",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "dev": "tsc --watch ./src/**",
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.17.12",
     "@types/bcrypt": "^5.0.0",
+    "@types/express": "^4.17.13",
     "@types/jest": "^28.1.1",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
@@ -27,6 +29,8 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "express": "^4.18.1",
+    "sucrase": "^3.21.0",
     "typescript": "^4.7.3"
   }
 }
